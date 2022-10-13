@@ -40,9 +40,13 @@ function get_data(endpoint){
     }
 
      //invocar get data
-     get_data(url).then( function (data) {
-        exito(data)
-     }).catch(function(error){
-        fallo(Error(error))
-     })
+     const f = async function(){
+        try{
+        let response = await get_data(url)
+        exito(response)
+     }catch( status ){
+        fallo(status)
+     }
+    }
 
+     f()
